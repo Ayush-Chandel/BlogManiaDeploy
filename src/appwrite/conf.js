@@ -230,6 +230,8 @@ import { createClient } from '@supabase/supabase-js'
      }
 
       const fileObj  = this.storage.getPublicUrl(fileId, quality );
+     
+      
 
       return fileObj.data.publicUrl;
      
