@@ -52,6 +52,9 @@ function PostForm({post}) {
 
            }else{
 
+          
+            
+
             const fileId = await appwriteService.uploadFile(data.image[0]);
 
             if(fileId){

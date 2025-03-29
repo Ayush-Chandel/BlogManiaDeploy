@@ -175,18 +175,24 @@ import { createClient } from '@supabase/supabase-js'
     async uploadFile(file){
         try {
 
-            let deleteConfirm = await this.deleteFile(file.name);
+             // let deleteConfirm = await this.deleteFile(file.name);
 
             //DeleteFile Does not give an error even if file does not exists which works in this case cause if file exists delete it
 
-            if(deleteConfirm === false){
-              throw new Error('Error in deleteFile');
-            }
-            
-             const fileObj = await this.storage.upload(file.name, file)
+            // if(deleteConfirm === false){
+            //   throw new Error('Error in deleteFile');
+            // }
+
+            let fileName = file.name;
+            let subName = fileName.slice(fileName.lastIndexOf('.'));
+
+            fileName = crypto.randomUUID() + subName;
+         
+             const fileObj = await this.storage.upload(fileName, file)
              
-             if(fileObj.data){
-                return file.name
+             
+             if(fileObj.data ){
+                return fileName;
              }
 
              throw new Error(fileObj.error.message);
