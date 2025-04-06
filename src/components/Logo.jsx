@@ -1,9 +1,10 @@
 import React from 'react'
+import myImage from '../assets/blogmania-high-resolution-logo-transparent.png';
 
 function Logo({width = '100px'}) {
   return (
     <div >
-      <img width={width} src="/assets/blogmania-high-resolution-logo-transparent.png" alt="logo" />
+      <img width={width} src={myImage} alt="logo" />
     </div>
   )
 }
