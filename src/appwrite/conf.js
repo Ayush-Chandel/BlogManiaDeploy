@@ -34,7 +34,8 @@ import { createClient } from '@supabase/supabase-js'
         
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId}) {
+    async createPost({title, slug, content, featuredImage, status, userId, publicPost}) {
+       
         
         try {
 
@@ -44,13 +45,28 @@ import { createClient } from '@supabase/supabase-js'
             if (docInfo.exists()) {
              throw error;
             } else {
+
+
+              // let postObj = {
+              //   title,
+              //   content,
+              //   status,
+              //   featuredImage,
+              //   userId
+              // };
+
+              // if(public){
+              //   postObj.public = public
+              // }
+
                 
                await setDoc(doc(this.db, config.firebaseCollectionId, slug), {
                 title,
                 content,
                 status,
                 featuredImage,
-                userId
+                userId,
+                publicPost
               });
 
               return true;
@@ -58,7 +74,13 @@ import { createClient } from '@supabase/supabase-js'
   
         } catch (error) {
             console.log('Firebase service:: createPost error:: error', error);
+
             
+            if (error.message == 'error is not defined') {
+              return 'same slug error'
+            }
+            
+            return false;
         }
 
     }
@@ -158,6 +180,8 @@ import { createClient } from '@supabase/supabase-js'
          );
 
          return dataArr;
+        
+         
  
         } catch (error) {
             console.log('Firebase service:: getPosts error:: error', error);

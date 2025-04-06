@@ -1,16 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import appwriteService from '../appwrite/conf';
 import { PostCard, Container } from '../components';
+import { useSelector } from 'react-redux';
+import { where } from 'firebase/firestore';
 
-function AllPosts() {
+function MyPosts() {
 
     const [posts,setPosts] = useState([]);
 
+   const userId = useSelector((state) => state.auth.userData?.uid)
+
+   
+   
     useEffect(() => {
-     
       
-      
-      appwriteService.getPosts([]).then((posts) => {
+      appwriteService.getPosts([where('userId', '==', userId)]).then((posts) => {
         
       if (posts) {
         
@@ -42,4 +46,4 @@ function AllPosts() {
   )
 }
 
-export default AllPosts
+export default MyPosts;

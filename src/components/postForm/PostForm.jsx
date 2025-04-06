@@ -1,15 +1,20 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect,useState} from 'react';
 import { useForm } from 'react-hook-form';
 import {Input, Select, Button, RTE} from '../index';
 import appwriteService from '../../appwrite/conf';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import authService from '../../appwrite/auth';
+import {updatePublic,increPublic} from '../../store/postSlice';
+import { where } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+
 
 
 function PostForm({post}) {
  
-  
+  const [error, setError] = useState('');
+  const dispatch = useDispatch();
 
     const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
         defaultValues: {
@@ -21,10 +26,15 @@ function PostForm({post}) {
         }
     });
 
+  
+    
+
     const navigate = useNavigate();
 
-    const userData = useSelector((state) => state.userData);
+    const userData = useSelector((state) => state.auth.userData);
+    let publicCount = useSelector((state) => state.post.publicCount);
     
+ 
     
 
     const submit = async (data) => {
@@ -39,6 +49,8 @@ function PostForm({post}) {
             await appwriteService.deleteFile(post.featuredImage)
            }
 
+           
+
            const dbPost = await appwriteService.updatePost(
             post.$id,{
               ...data,
@@ -47,26 +59,67 @@ function PostForm({post}) {
            )
 
            if(dbPost){
-            navigate(`/post/${post.$id}`)
+                if (post.publicPost) {
+                
+                  //publicPosts updated to redux store here
+
+                const posts = await appwriteService.getPosts([where('publicPost', '==', true)])
+                
+      
+        
+
+                    if(posts){
+                      dispatch(updatePublic([posts.length, posts]))
+                      navigate(`/post/${post.$id}`)
+                    }
+                    
+
+                }else{
+                  navigate(`/post/${post.$id}`)
+                }
+                
            }
 
            }else{
 
           
-            
+            setError('');
 
             const fileId = await appwriteService.uploadFile(data.image[0]);
 
             if(fileId){
+              
+              publicCount < 8 ? data.publicPost = true : data.publicPost = false
+             
+             
 
               data.featuredImage = fileId;
               const dbPost = await appwriteService.createPost({
                 ...data,
                 userId:  userData.uid
               });
-              
-              if(dbPost){
-                navigate(`/post/${data.slug}`)
+
+              if(dbPost === 'same slug error'){
+                 setError('Error!! : Please enter different slug either directly in slug field or by changing title')
+              }else if(dbPost ){
+
+                    if(publicCount < 8){
+
+                      //publicPosts pushed to redux store here
+                       
+                      publicCount = publicCount + 1;
+                      let post = await  appwriteService.getPost(data.slug);
+                      
+                        if(post){
+                          dispatch(increPublic([publicCount,post]));
+                          navigate(`/post/${data.slug}`)
+                        }
+                      
+                    }else{
+                      navigate(`/post/${data.slug}`)
+                    }
+
+                
               }
               
             }
@@ -126,6 +179,7 @@ function PostForm({post}) {
  
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+      {error && <p className='text-white mt-8 text-center w-full mb-6 '>{error}</p>}
     <div className="w-2/3 px-2">
         <Input
             label="Title :"

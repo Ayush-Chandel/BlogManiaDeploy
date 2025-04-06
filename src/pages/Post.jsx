@@ -5,14 +5,22 @@ import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
+import { where } from 'firebase/firestore';
+import {updatePublic} from '../store/postSlice';
+import { useDispatch } from 'react-redux';
+
 export default function Post() {
     const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
 
-    const userData = useSelector((state) => state.userData);
+    const userData = useSelector((state) => state.auth.userData);
 
     const isAuthor = post && userData ? post.userId === userData.uid : false;
+
+    const dispatch = useDispatch();
+
+    
 
     useEffect(() => {
         if (slug) {
@@ -26,8 +34,24 @@ export default function Post() {
     const deletePost = async () => {
       let status = await appwriteService.deletePost(post.$id);
             if (status) {
-                await appwriteService.deleteFile(post.featuredImage);
-                navigate("/");
+               const fileStatus =  await appwriteService.deleteFile(post.featuredImage);
+
+               if (fileStatus) {
+
+                if (post.publicPost) {
+
+                    const posts = await appwriteService.getPosts([where('publicPost', '==', true)])
+                    
+                        if(posts){
+                          dispatch(updatePublic([posts.length, posts]))
+                          navigate(`/`)
+                        }
+                        
+    
+                    }else{
+                      navigate(`/`)
+                    }
+               }
             }
        
     };

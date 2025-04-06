@@ -7,7 +7,11 @@ import authService from './appwrite/auth';
 import { login, logout } from './store/authSlice';
 import { Header } from './components';
 import { Footer } from './components';
-import {Outlet} from 'react-router-dom'
+import {Outlet} from 'react-router-dom';
+import appwriteService from './appwrite/conf';
+import { where } from 'firebase/firestore';
+import {updatePublic} from './store/postSlice';
+
 
 
 
@@ -18,6 +22,7 @@ function App() {
   const [loading,setLoading] = useState(true);
   const dispatch = useDispatch()
 
+ 
   
 
   useEffect(() => {
@@ -31,15 +36,55 @@ function App() {
 
       }else{
         dispatch(logout())
+        
       }
     }
     )
-    .finally(() => setLoading(false)
+    .finally(() => {
+
+      
+      appwriteService.getPosts([where('publicPost', '==', true)]).then((posts) => {
+
+        if(posts){
+            dispatch(updatePublic([posts.length, posts]))
+          setLoading(false);  
+        }
+            }
+            );
+
+            // setLoading(false);  
+
+          
+    }
+      
     )
     
     
   },[]
   )
+
+  
+  // useEffect(() => {
+
+  //   authService.getCurrentUser()
+  //   .then((userData) => {
+      
+  
+  //     if(userData){
+  //       dispatch(login({userData}));
+
+  //     }else{
+  //       dispatch(logout())
+        
+  //     }
+  //   }
+  //   )
+  //   .finally(() => setLoading(false)
+  //   )
+    
+    
+  // },[]
+  // )
 
   
   
@@ -56,7 +101,7 @@ function App() {
 
       </div>
       </div>
-  ) : null
+  ) : <div>...Loading</div>
 }
 
 export default App
