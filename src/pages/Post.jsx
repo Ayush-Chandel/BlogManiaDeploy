@@ -23,13 +23,15 @@ export default function Post() {
     
 
     useEffect(() => {
+       
+        
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
                 if (post) setPost(post);
                 else navigate("/");
             });
         } else navigate("/");
-    }, [slug, navigate]);
+    }, [slug, navigate,userData]);
 
     const deletePost = async () => {
       let status = await appwriteService.deletePost(post.$id);

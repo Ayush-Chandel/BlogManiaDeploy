@@ -1,6 +1,7 @@
 import React from 'react'
 import myImage from '../assets/blogmania-high-resolution-logo-transparent.png';
 
+
 function Logo({width = '100px'}) {
   return (
     <div >
