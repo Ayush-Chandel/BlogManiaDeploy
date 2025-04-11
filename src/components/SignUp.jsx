@@ -37,7 +37,7 @@ function SignUp() {
     
   return (
     <div className='flex items-center justify-center'>
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`} >
+      <div className={`mx-auto w-full max-w-lg  my-6 bg-gray-300 rounded-xl p-10 border border-black/10`} >
 
         <div className='mb-2 flex justify-center'>
         
@@ -71,7 +71,7 @@ function SignUp() {
                  /> */}
 
                 <Input
-                 label='Email: '
+                 label='Email '
                  placeholder= 'Enter your email'
                  type='email' 
                  {...register('email',{
@@ -83,7 +83,7 @@ function SignUp() {
                 })} />
 
                 <Input 
-                label='Password: '
+                label='Password '
                 placeholder='Enter your password'
                 type='password' 
                 {...register('password' , {

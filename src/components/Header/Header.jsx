@@ -46,21 +46,21 @@ function Header() {
   ]
 
   return (
-    <header className='py-3 shadow bg-gray-400'>
+    <header className='py-4  bg-[rgb(250,250,250)] border-b-[1px] border-black '>
       <Container>
-        <nav className='flex'>
+        <nav className='flex items-center'>
           <div className='mr-4'>
             <Link to='/'>
-            <Logo width='70px' />
+            <Logo width='250px' />
             </Link>
             
           </div>
-          <ul className='flex ml-auto'>
+          <ul className='flex ml-auto mr-2'>
             {navItems.map((item) => item.active ? (<li key={item.name}>
                 <button onClick={() => {
                   navigate(item.slug)
                 }
-                } className='inline-block px-6 py-2 duration-200 hover:bg-blue-200 rounded-full' >
+                } className={`inline-block px-6 py-[10px] duration-200 hover:bg-blue-200 rounded-full hover:text-white mr-2 ${item.name === 'Signup' ? 'bg-red-600 text-white hover:bg-red-600 hover:opacity-50  ' : '' }`} >
                 {item.name}
                 </button>
                 </li>)

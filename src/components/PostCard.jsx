@@ -7,15 +7,15 @@ function PostCard({
 }) {
   return (
     <Link to={`/post/${$id}`}>
-      <div className='w-full bg-gray-100 rounded-xl p-4'>
-      <div className='w-full  justify-center mb-4'>
+      <div className='w-full bg-gray-400 rounded-xl p-4'>
+      <div className='w-full   mb-4'>
 
-        <img src={appwriteService.getFilePreview(featuredImage, 50)} 
+        <img  src={appwriteService.getFilePreview(featuredImage, 50)} 
         alt={title} 
-        className='rounded-xl' />
+        className='rounded-xl w-full h-[170px] object-cover' />
 
       </div>
-      <h2  className='text-xl font-bold'> {title}</h2>
+      <h2  className='text-xl font-bold truncate'> {title}</h2>
       </div>
     </Link>
   )

@@ -32,7 +32,7 @@ function Login() {
 
   return (
     <div className='flex items-center justify-center w-full'>
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+      <div className={`mx-auto my-6 w-full max-w-lg bg-gray-300 rounded-xl p-10 border border-black/10`}>
       <div className='mb-2 flex justify-center'>
 
         <span className='inline-block w-full max-w-[100px]'>
@@ -59,7 +59,7 @@ function Login() {
             <div className='space-y-5'>
               
                 <Input 
-                label='Email: '
+                label='Email '
                 placeholder= 'Enter your email'
                  type='email'
                  {...register('email',{
@@ -72,7 +72,7 @@ function Login() {
                  />
 
                  <Input 
-                 label='Password: '
+                 label='Password '
                  placeholder='Enter your password'
                  type='password'
                  {...register(
@@ -84,7 +84,7 @@ function Login() {
 
                   <Button 
                   type='submit' 
-                  className='w-full'
+                  className='w-full '
                   >
                     Sign In
                   </Button>

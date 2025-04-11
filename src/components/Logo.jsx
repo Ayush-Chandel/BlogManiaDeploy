@@ -1,5 +1,5 @@
 import React from 'react'
-import myImage from '../assets/blogmania-high-resolution-logo-transparent.png';
+import myImage from '../assets/blogmania logo full.png';
 
 
 function Logo({width = '100px'}) {

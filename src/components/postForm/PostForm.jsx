@@ -178,9 +178,10 @@ function PostForm({post}) {
     
  
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      {error && <p className='text-white mt-8 text-center w-full mb-6 '>{error}</p>}
-    <div className="w-2/3 px-2">
+    <form onSubmit={handleSubmit(submit)} className='w-full px-4 py-12 flex justify-center bg-[rgb(220,220,220)]'>
+     <div className="flex flex-wrap gap-x-16 w-4/5 mt-5 mb-8">
+     {error && <p className='text-black mt-8 text-center w-full mb-6 '>{error}</p>}
+    <div className="w-[62%] px-2">
         <Input
             label="Title :"
             placeholder="Title"
@@ -199,16 +200,17 @@ function PostForm({post}) {
         />
         <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
     </div>
-    <div className="w-1/3 px-2">
+    <div className="w-[30%] px-2">
         <Input
-            label="Featured Image :"
+            label={post ? "Update Featured Image :" : 'Add Featured Image :'}
             type="file"
             className="mb-4"
             accept="image/png, image/jpg, image/jpeg, image/gif"
             {...register("image", { required: !post })}
         />
         {post && (
-            <div className="w-full mb-4">
+            <div className="w-full mb-6">
+              <p className='mb-4'>Current Featured Image :</p>
                 <img
                     src={appwriteService.getFilePreview(post.featuredImage,50)}
                     alt={post.title}
@@ -227,6 +229,7 @@ function PostForm({post}) {
             {post ? "Update" : "Submit"}
         </Button>
     </div>
+     </div>
 </form>
   )
 }
