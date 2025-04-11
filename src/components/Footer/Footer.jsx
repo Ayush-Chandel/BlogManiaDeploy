@@ -18,7 +18,7 @@ function Footer() {
                     <div className='border-r-[2px] border-black mx-8 self-stretch'></div>
                     <div>
                         <p className="text-sm text-gray-600">
-                            &copy; Copyright 2024. All Rights Reserved.
+                            &copy; Copyright 2025 BlogMania. All Rights Reserved.
                         </p>
                     </div>
                 </div>

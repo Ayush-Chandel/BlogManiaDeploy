@@ -210,7 +210,7 @@ function PostForm({post}) {
         />
         {post && (
             <div className="w-full mb-6">
-              <p className='mb-4'>Current Featured Image :</p>
+              <p className='mb-4 text-xl'>Current Featured Image :</p>
                 <img
                     src={appwriteService.getFilePreview(post.featuredImage,50)}
                     alt={post.title}

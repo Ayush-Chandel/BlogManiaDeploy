@@ -62,16 +62,16 @@ export default function Post() {
         <div className="  py-8">
             <Container>
 
-             <div className="pb-6">
-             <div className=" my-6">
-                    <h1 className="w-[53%] mx-auto text-3xl font-bold">{post.title}</h1>
+             <div className="pb-8">
+             <div className=" my-10 mb-16">
+                    <h1 className="w-[57%] mx-auto text-4xl font-bold">{post.title}</h1>
                 </div>   
             <div className="w-full my-12 flex justify-center">
-            <div className=" flex w-3/5 justify-center mb-4 relative  rounded-xl ">
+            <div className=" flex w-[65%] justify-center mb-4 relative  rounded-xl ">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl w-full  h-[400px] border p-3 object-cover bg-gray-500"
+                        className="rounded-xl w-full  h-[500px] border p-3 object-cover bg-gray-500"
                     />
 
                     {isAuthor && (

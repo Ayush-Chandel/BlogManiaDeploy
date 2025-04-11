@@ -41,14 +41,14 @@ function SignUp() {
 
         <div className='mb-2 flex justify-center'>
         
-                <span className='inline-block w-full max-w-[100px]'>
+                <span className='inline-block w-full max-w-[150px]'>
                     <Logo width='100%'/>
                 </span>
         
               </div>
 
-              <h2 className='text-center text-2xl font-bold leading-tight'>Sign up to create account</h2>
-                    <p className="mt-2 text-center text-base text-black/60">
+              <h2 className='text-center text-3xl font-bold leading-tight'>Sign up to create account</h2>
+                    <p className="mt-2 text-center text-lg text-black/60">
                                   Already have any account?&nbsp;
                                   <Link
                                       to="/login"
@@ -57,9 +57,9 @@ function SignUp() {
                                       Login
                                   </Link>
                       </p>
-                      {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
+                      {error && <p className='text-red-600 mt-8 text-lg text-center'>{error}</p>}
 
-        <form onSubmit={handleSubmit(create)}>
+        <form onSubmit={handleSubmit(create)} className='mt-8'>
             <div className='space-y-5'>
 
                 {/* <Input 
