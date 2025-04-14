@@ -31,7 +31,7 @@ function MyPosts() {
 
   return (
     
-     <div className='py-8 w-full'>
+     <div className='pt-14 pb-10 w-full'>
             
           <Container>
           <div className='px-6'>

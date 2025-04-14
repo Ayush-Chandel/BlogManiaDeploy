@@ -28,10 +28,10 @@ function EditPost() {
     ,[slug,navigate])
 
   return post ? (
-    <div className='py-8  '>
-      <Container >
+    <div >
+    
         <PostForm post={post} />
-      </Container>
+      
       
     </div>
   ) : null;

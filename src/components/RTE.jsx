@@ -43,7 +43,7 @@ export default function RTE({name, control, label, defaultValue = ''}) {
                     "anchor",
                 ],
                 toolbar:
-                "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help"
+                "undo redo | blocks | fontsize|  bold italic forecolor | image | alignleft aligncenter  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help"
                 
             }}
             onEditorChange={onChange}
