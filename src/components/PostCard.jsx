@@ -12,10 +12,10 @@ function PostCard({
 
         <img  src={appwriteService.getFilePreview(featuredImage, 50)} 
         alt={title} 
-        className='rounded-xl w-full h-[210px] object-cover' />
+        className='rounded-xl w-full h-[180px] xl:h-[210px] object-cover' />
 
       </div>
-      <h2  className='text-2xl mt-4 mb-1 font-bold truncate'> {title}</h2>
+      <h2  className='  text-[20px] xl:text-2xl mt-4 mb-1 font-bold truncate'> {title}</h2>
       </div>
     </Link>
   )

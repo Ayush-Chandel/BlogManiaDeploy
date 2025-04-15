@@ -74,27 +74,27 @@ function Home() {
         <div className='w-full pb-12'>
            
                 <HomeWrapper>
-                <div className='pb-10 gap-x-14 gap-y-16 flex flex-wrap'>
+                <div className='pb-10 gap-x-14 gap-y-16 flex flex-wrap justify-center'>
                     {posts.map((post) => (
-                        <div key={post.$id} className=' w-[30%]'>
+                        <div key={post.$id} className='min-w-[290px] w-[30%]'>
                             <PostCard {...post} />
                             
                         </div>)
                     )}
-                    <div key={'thisisakeyforcard'} className=' w-[30%]'>
+                    <div key={'thisisakeyforcard'} className=' min-w-[290px] w-[30%]'>
                     
                             <Link to={'/all-posts'}>
                             <div className='w-full bg-gray-400 rounded-xl p-4'>
                             <div className='w-full   '>
 
-                                <div className='h-[210px]  rounded-xl px-2 py-6 bg-orange-800 text-center text-7xl text-slate-300'>
+                                <div className=' h-[180px] xl:h-[210px]   rounded-xl px-2 py-6 bg-orange-800 text-center text-6xl xl:text-7xl text-slate-300'>
                                    <p >Read </p>
                                 <p  >More</p> 
                                 </div>
                                 
 
                             </div>
-                            <h2  className='text-2xl mt-4 mb-1 font-bold'> Click here to read more</h2>
+                            <h2  className= ' text-[20px] text-2xl mt-4 mb-1 font-bold'> Click here to read more</h2>
                             </div>
                             </Link>
                             

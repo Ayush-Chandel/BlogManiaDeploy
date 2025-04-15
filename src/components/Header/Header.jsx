@@ -95,13 +95,13 @@ function Header() {
                     }
                     navigate(item.slug)
                   }
-                  } className={`w-full text-start  inline-block px-2 py-[10px]  mr-2 text-[18px]  border-b-[1px] border-gray-500 text-white`} >
+                  } className={`w-full text-start  inline-block px-2 py-[10px]  mr-2 text-[16px]  border-b-[1px] border-gray-500 text-white`} >
                   {item.name}
                   </button>
                   </li>)
                   : null
               )}
-              {authStatus && (<li > <LogoutBtn className=' mt-10 border-gray-300 text-[18px]' visible={visible} setVisible={setVisible} /> </li>)}
+              {authStatus && (<li > <LogoutBtn className=' mt-5 border-gray-300 text-[14px] px-4 py-1' visible={visible} setVisible={setVisible} /> </li>)}
             </ul>
             </div>
 
