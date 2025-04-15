@@ -3,11 +3,16 @@ import { logout } from '../../store/authSlice'
 import { useDispatch } from 'react-redux'
 import authService from '../../appwrite/auth'
 
-function LogoutBtn({className = ''}) {
+function LogoutBtn({className = '', setVisible, visible}) {
 
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
+    
+    if(visible){
+      setVisible(false)
+    }
+
     authService.logout()
     .then(() => {
       dispatch(logout())

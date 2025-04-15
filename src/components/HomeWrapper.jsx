@@ -10,7 +10,7 @@ function HomeWrapper({children}) {
 
   return (
     <div className='w-full max-w-8xl mx-auto  '> 
-     <div className='w-full flex justify-between mb-14 border-b-[1px] border-black px-12 py-12 items-center'>
+     <div className='w-full overflow-hidden flex justify-between mb-14 border-b-[1px] border-black px-12 py-12 items-center'>
      <div className='text-[105px]  leading-none text-center text-nowrap   '>
        <p>Welcome to</p>
        <p className='[text-shadow:_2px_2px_8px_black] mt-3 text-white'>BlogMania</p>
