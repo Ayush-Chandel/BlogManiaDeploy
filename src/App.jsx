@@ -11,7 +11,7 @@ import {Outlet} from 'react-router-dom';
 import appwriteService from './appwrite/conf';
 import { where } from 'firebase/firestore';
 import {updatePublic} from './store/postSlice';
-
+import loadGif from './assets/loading-loading-forever.gif'
 
 
 
@@ -101,7 +101,10 @@ function App() {
 
       </div>
       </div>
-  ) : <div>...Loading</div>
+  ) : <div className='h-[100vh] flex justify-center items-center'>
+    <img src={loadGif} className='w-[50px] h-[50px]' alt="" />
+    
+  </div>
 }
 
 export default App
