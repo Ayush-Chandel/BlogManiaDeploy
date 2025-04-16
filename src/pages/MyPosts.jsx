@@ -36,11 +36,11 @@ function MyPosts() {
           <Container>
           <div className='px-6'>
           <div className='flex justify-center mb-16'>
-                <p className='  text-center text-6xl pb-3 border-b-2 border-slate-600 font-semibold text-red-600'>My Articles</p>
+                <p className='  text-center text-3xl xl:text-6xl pb-3 border-b-2 border-slate-600 font-semibold text-red-600'>My Articles</p>
               </div>
-            <div className='pb-10 gap-x-14 gap-y-16 flex flex-wrap'>
+            <div className='pb-10 gap-x-14 gap-y-16 flex flex-wrap justify-center'>
                 {
-                posts.map((post) => <div className='w-[30%]' key={post.$id}> 
+                posts.map((post) => <div className='min-w-[290px] w-[30%]' key={post.$id}> 
                 <PostCard {...post} /> </div>
                 )
                 }

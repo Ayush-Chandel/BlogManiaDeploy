@@ -179,9 +179,9 @@ function PostForm({post}) {
  
   return (
     <form onSubmit={handleSubmit(submit)} className='w-full px-4 py-12 flex justify-center bg-[rgb(220,220,220)]'>
-     <div className="flex flex-wrap gap-x-16 w-4/5 mt-5 mb-8">
+     <div className="flex flex-wrap gap-x-16 w-[95%] xl:w-4/5 mt-5 mb-8">
      {error && <p className='text-black mt-8 text-center w-full mb-6 '>{error}</p>}
-    <div className="w-[62%] px-2">
+    <div className="w-[92%] mx-auto xl:w-[62%] px-2">
         <Input
             label="Title :"
             placeholder="Title"
@@ -200,7 +200,7 @@ function PostForm({post}) {
         />
         <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
     </div>
-    <div className="w-[30%] px-2">
+    <div className="w-[92%] mx-auto xl:w-[30%] px-2 py-10 xl:py-0">
         <Input
             label={post ? "Update Featured Image :" : 'Add Featured Image :'}
             type="file"
@@ -209,12 +209,12 @@ function PostForm({post}) {
             {...register("image", { required: !post })}
         />
         {post && (
-            <div className="w-full mb-6">
-              <p className='mb-4 text-xl'>Current Featured Image :</p>
+            <div className="w-full mb-6 flex flex-col items-center">
+              <p className='w-full mb-4 text-base xl:text-xl'>Current Featured Image :</p>
                 <img
                     src={appwriteService.getFilePreview(post.featuredImage,50)}
                     alt={post.title}
-                    className="rounded-lg w-full h-[170px] object-cover"
+                    className="rounded-lg  w-full h-[170px] object-cover "
                 />
             </div>
         )}
@@ -222,7 +222,7 @@ function PostForm({post}) {
         <Select
             options={["active", "inactive"]}
             label="Status"
-            className="mb-4"
+            className="mb-4 mt-2 xl:mt-0 "
             {...register("status", { required: true })}
         />
         <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
