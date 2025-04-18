@@ -112,7 +112,7 @@ export class AuthService{
         try {
             await signOut(this.auth);
         } catch (error) {
-            console.log('Appwrite service :: logout :: error' , error);
+            console.log('Firebase service :: logout :: error' , error);
         }
     }
 

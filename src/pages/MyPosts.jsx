@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import appwriteService from '../appwrite/conf';
+import firebaseService from '../firebase/conf';
 import { PostCard, Container } from '../components';
 import { useSelector } from 'react-redux';
 import { where } from 'firebase/firestore';
@@ -14,7 +14,7 @@ function MyPosts() {
    
     useEffect(() => {
       
-      appwriteService.getPosts([where('userId', '==', userId)]).then((posts) => {
+      firebaseService.getPosts([where('userId', '==', userId)]).then((posts) => {
         
       if (posts) {
         

@@ -1,7 +1,7 @@
 import React from 'react'
 import { logout } from '../../store/authSlice'
 import { useDispatch } from 'react-redux'
-import authService from '../../appwrite/auth'
+import authService from '../../firebase/auth'
 
 function LogoutBtn({className = '', setVisible, visible}) {
 

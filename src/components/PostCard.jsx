@@ -1,5 +1,5 @@
 import React from 'react';
-import appwriteService from '../appwrite/conf';
+import firebaseService from '../firebase/conf';
 import { Link } from 'react-router-dom';
 
 function PostCard({
@@ -10,7 +10,7 @@ function PostCard({
       <div className='w-full bg-gray-400 rounded-xl p-4'>
       <div className='w-full   '>
 
-        <img  src={appwriteService.getFilePreview(featuredImage, 50)} 
+        <img  src={firebaseService.getFilePreview(featuredImage, 50)} 
         alt={title} 
         className='rounded-xl w-full h-[180px] xl:h-[210px] object-cover' />
 

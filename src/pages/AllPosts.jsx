@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import appwriteService from '../appwrite/conf';
+import firebaseService from '../firebase/conf';
 import { PostCard, Container } from '../components';
 
 function AllPosts() {
@@ -10,7 +10,7 @@ function AllPosts() {
      
       
       
-      appwriteService.getPosts([]).then((posts) => {
+      firebaseService.getPosts([]).then((posts) => {
         
       if (posts) {
         

@@ -54,12 +54,12 @@ function Header() {
         <nav >
            {/* Navbar for Mobile */}
 
-        <div className={ `w-full h-screen  bg-[rgba(150,150,150,0.5)]  ${visible ? 'left-0 '  : ' -left-full' } top-0 transition-all duration-100  xl:hidden fixed z-30`} onClick={() => {
+        <div className={ `w-full  h-screen  bg-[rgba(150,150,150,0.5)]  ${visible ? 'left-0 '  : ' -left-full' } top-0 transition-all duration-100  xl:hidden fixed z-30`} onClick={() => {
           setVisible(false);
         }
         }>
           
-          <div className='w-[70%] h-[100vh]  bg-slate-400 pt-8 pl-4 ' onClick={(e) => {
+          <div className='w-[70%] md:w-[40%] h-[100vh]  bg-slate-400 pt-8 pl-4 ' onClick={(e) => {
             e.stopPropagation();
           }
           }>

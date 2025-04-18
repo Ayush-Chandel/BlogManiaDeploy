@@ -1,10 +1,10 @@
 import React, {useCallback, useEffect,useState} from 'react';
 import { useForm } from 'react-hook-form';
 import {Input, Select, Button, RTE} from '../index';
-import appwriteService from '../../appwrite/conf';
+import firebaseService from '../../firebase/conf';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import authService from '../../appwrite/auth';
+import authService from '../../firebase/auth';
 import {updatePublic,increPublic} from '../../store/postSlice';
 import { where } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
@@ -43,15 +43,15 @@ function PostForm({post}) {
         if (post) {
          
           
-           const fileId =  data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
+           const fileId =  data.image[0] ? await firebaseService.uploadFile(data.image[0]) : null;
 
            if(fileId){ 
-            await appwriteService.deleteFile(post.featuredImage)
+            await firebaseService.deleteFile(post.featuredImage)
            }
 
            
 
-           const dbPost = await appwriteService.updatePost(
+           const dbPost = await firebaseService.updatePost(
             post.$id,{
               ...data,
               featuredImage: fileId ? fileId : undefined
@@ -63,7 +63,7 @@ function PostForm({post}) {
                 
                   //publicPosts updated to redux store here
 
-                const posts = await appwriteService.getPosts([where('publicPost', '==', true)])
+                const posts = await firebaseService.getPosts([where('publicPost', '==', true)])
                 
       
         
@@ -85,7 +85,7 @@ function PostForm({post}) {
           
             setError('');
 
-            const fileId = await appwriteService.uploadFile(data.image[0]);
+            const fileId = await firebaseService.uploadFile(data.image[0]);
 
             if(fileId){
               
@@ -94,7 +94,7 @@ function PostForm({post}) {
              
 
               data.featuredImage = fileId;
-              const dbPost = await appwriteService.createPost({
+              const dbPost = await firebaseService.createPost({
                 ...data,
                 userId:  userData.uid
               });
@@ -108,7 +108,7 @@ function PostForm({post}) {
                       //publicPosts pushed to redux store here
                        
                       publicCount = publicCount + 1;
-                      let post = await  appwriteService.getPost(data.slug);
+                      let post = await  firebaseService.getPost(data.slug);
                       
                         if(post){
                           dispatch(increPublic([publicCount,post]));
@@ -179,9 +179,9 @@ function PostForm({post}) {
  
   return (
     <form onSubmit={handleSubmit(submit)} className='w-full px-4 py-12 flex justify-center bg-[rgb(220,220,220)]'>
-     <div className="flex flex-wrap gap-x-16 w-[95%] xl:w-4/5 mt-5 mb-8">
+     <div className="flex flex-wrap  xl:gap-x-16  w-[95%] md:w-[95%] xl:w-4/5 mt-5 mb-8">
      {error && <p className='text-black mt-8 text-center w-full mb-6 '>{error}</p>}
-    <div className="w-[92%] mx-auto xl:w-[62%] px-2">
+    <div className="w-[92%] mx-auto md:w-[52%] xl:w-[62%] px-2">
         <Input
             label="Title :"
             placeholder="Title"
@@ -200,7 +200,7 @@ function PostForm({post}) {
         />
         <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
     </div>
-    <div className="w-[92%] mx-auto xl:w-[30%] px-2 py-10 xl:py-0">
+    <div className="w-[92%] mx-auto md:w-[35%] xl:w-[30%] px-2 py-10 xl:py-0">
         <Input
             label={post ? "Update Featured Image :" : 'Add Featured Image :'}
             type="file"
@@ -212,7 +212,7 @@ function PostForm({post}) {
             <div className="w-full mb-6 flex flex-col items-center">
               <p className='w-full mb-4 text-base xl:text-xl'>Current Featured Image :</p>
                 <img
-                    src={appwriteService.getFilePreview(post.featuredImage,50)}
+                    src={firebaseService.getFilePreview(post.featuredImage,50)}
                     alt={post.title}
                     className="rounded-lg  w-full h-[170px] object-cover "
                 />

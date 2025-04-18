@@ -11,14 +11,14 @@ function HomeWrapper({children}) {
   return (
     <div className='w-full max-w-8xl mx-auto  '> 
 
-     <div className='w-full  flex flex-col gap-y-10 xl:flex-row justify-between mb-14 border-b-[1px] border-black px-12 py-12 items-center'>
+     <div className='w-full  flex flex-col gap-y-10 md:flex-row justify-between mb-14 border-b-[1px] border-black px-12 py-12 items-center'>
 
      <div className=' text-[50px] xl:text-[105px]  leading-none text-center text-nowrap   '>
        <p>Welcome to</p>
        <p className='[text-shadow:_2px_2px_8px_black] mt-3 text-white'>BlogMania</p>
       </div>
 
-     <div className='border-b-[2px] xl:border-r-[2px] border-black mx-8 self-stretch'></div>
+     <div className='border-b-[2px] md:border-r-[2px] border-black mx-8 self-stretch'></div>
 
      <p className=' text-black text-center text-[16px] xl:text-[23px] '>Your go-to destination for insightful articles, fresh ideas, and engaging stories. Whether you're here for inspiration, knowledge, or just a good read, we've got something for everyone. Explore, discover, and stay curious!</p>
      </div>

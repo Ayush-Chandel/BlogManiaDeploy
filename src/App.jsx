@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 import './App.css'
 
-import authService from './appwrite/auth';
+import authService from './firebase/auth';
 import { login, logout } from './store/authSlice';
 import { Header } from './components';
 import { Footer } from './components';
 import {Outlet} from 'react-router-dom';
-import appwriteService from './appwrite/conf';
+import firebaseService from './firebase/conf';
 import { where } from 'firebase/firestore';
 import {updatePublic} from './store/postSlice';
 import loadGif from './assets/loading-loading-forever.gif'
@@ -43,7 +43,7 @@ function App() {
     .finally(() => {
 
       
-      appwriteService.getPosts([where('publicPost', '==', true)]).then((posts) => {
+      firebaseService.getPosts([where('publicPost', '==', true)]).then((posts) => {
 
         if(posts){
             dispatch(updatePublic([posts.length, posts]))

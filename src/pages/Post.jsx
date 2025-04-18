@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import appwriteService from "../appwrite/conf";
+import firebaseService from "../firebase/conf";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
@@ -26,7 +26,7 @@ export default function Post() {
        
         
         if (slug) {
-            appwriteService.getPost(slug).then((post) => {
+            firebaseService.getPost(slug).then((post) => {
                 if (post) setPost(post);
                 else navigate("/");
             });
@@ -34,15 +34,15 @@ export default function Post() {
     }, [slug, navigate,userData]);
 
     const deletePost = async () => {
-      let status = await appwriteService.deletePost(post.$id);
+      let status = await firebaseService.deletePost(post.$id);
             if (status) {
-               const fileStatus =  await appwriteService.deleteFile(post.featuredImage);
+               const fileStatus =  await firebaseService.deleteFile(post.featuredImage);
 
                if (fileStatus) {
 
                 if (post.publicPost) {
 
-                    const posts = await appwriteService.getPosts([where('publicPost', '==', true)])
+                    const posts = await firebaseService.getPosts([where('publicPost', '==', true)])
                     
                         if(posts){
                           dispatch(updatePublic([posts.length, posts]))
@@ -64,14 +64,14 @@ export default function Post() {
 
              <div className="pb-8">
              <div className=" my-10 mb-14 xl:mb-16">
-                    <h1 className=" w-[93%] xl:w-[57%] mx-auto text-2xl xl:text-4xl font-bold">{post.title}</h1>
+                    <h1 className=" w-[93%] md:w-[65%] xl:w-[57%] mx-auto text-2xl xl:text-4xl font-bold">{post.title}</h1>
                 </div>   
             <div className="w-full my-8 xl:my-12 flex justify-center">
-            <div className=" flex w-[93%] xl:w-[65%] justify-center mb-4 relative  rounded-xl ">
+            <div className=" flex w-[93%] md:w-[70%] xl:w-[65%] justify-center mb-4 relative  rounded-xl ">
                     <img
-                        src={appwriteService.getFilePreview(post.featuredImage)}
+                        src={firebaseService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl w-full h-[250px] xl:h-[500px] border p-3 object-cover bg-gray-500"
+                        className="rounded-xl w-full h-[250px] md:h-[330px] xl:h-[500px] border p-3 object-cover bg-gray-500"
                     />
 
                     {isAuthor && (
@@ -90,7 +90,7 @@ export default function Post() {
             </div>
                 
                 <div className="w-full flex justify-center">
-                <div className="w-[90%]">
+                <div className="w-[90%] md:w-[80%] xl:w-[70%]">
                     {parse(post.content)}
                 </div>
                 </div>

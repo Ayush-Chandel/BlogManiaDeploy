@@ -1,6 +1,6 @@
 
 import React, {useEffect, useState} from 'react';
-import appwriteService from '../appwrite/conf';
+import firebaseService from '../firebase/conf';
 import { Container, PostCard, HomeWrapper} from '../components';
 import { useSelector } from 'react-redux';
 import { where } from 'firebase/firestore';
@@ -20,7 +20,7 @@ function Home() {
     
     // useEffect(() => {
         
-    //             appwriteService.getPosts([where('public', '==', true)]).then((posts) => {
+    //             firebaseService.getPosts([where('public', '==', true)]).then((posts) => {
 
     //             if(posts){
     //                 dispatch(updatePublic([posts.length, posts]))
@@ -114,7 +114,7 @@ export default Home
 
 
 // import React, {useEffect, useState} from 'react';
-// import appwriteService from '../appwrite/conf';
+// import firebaseService from '../firebase/conf';
 // import { Container, PostCard } from '../components';
 // import { useSelector } from 'react-redux';
 // import { where } from 'firebase/firestore';
@@ -128,7 +128,7 @@ export default Home
     
 //     useEffect(() => {
 //         if(authStatus){
-//                 appwriteService.getPosts().then((posts) => {
+//                 firebaseService.getPosts().then((posts) => {
 
 //                 if(posts){
 //                 setPosts(posts); 
@@ -136,7 +136,7 @@ export default Home
 //                     }
 //                     )
 //         }else{
-//                 appwriteService.getPosts([where('public', '==', true)]).then((posts) => {
+//                 firebaseService.getPosts([where('public', '==', true)]).then((posts) => {
 
 //                 if(posts){
 //                    setPosts(posts); 
