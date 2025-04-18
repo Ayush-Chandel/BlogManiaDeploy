@@ -5,7 +5,7 @@ import {Logo} from '../index'
 
 function Footer() {
   return (
-    <section className=" overflow-hidden  bg-[rgb(250,250,250)]  border-t-[1px] border-t-black">
+    <section className="   bg-[rgb(250,250,250)]  border-t-[1px] border-t-black mt-auto">
     <div className=" mx-auto max-w-7xl px-4">
         <div className="w-full m-6 flex flex-wrap">
             <div className="w-full p-4 ">

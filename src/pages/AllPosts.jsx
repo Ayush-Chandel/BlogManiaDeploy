@@ -33,7 +33,7 @@ function AllPosts() {
       <div className='flex justify-center mb-16'>
             <p className='  text-center text-3xl xl:text-6xl pb-3 border-b-2 border-slate-600 font-semibold text-red-600'>Articles</p>
           </div>
-        <div className='pb-10 gap-x-14 gap-y-16 flex flex-wrap justify-center'>
+        <div className='pb-10 gap-x-14 gap-y-16 flex flex-wrap justify-center xl:justify-start'>
             {
             posts.map((post) => <div className='min-w-[290px] w-[30%]' key={post.$id}> 
             <PostCard {...post} /> </div>

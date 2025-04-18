@@ -92,7 +92,7 @@ function SignUp() {
 
                 <Button
                 type='submit' 
-                className='w-full'
+                className='w-full py-2'
                 >
                 Sign Up
                 </Button>

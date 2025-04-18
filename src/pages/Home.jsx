@@ -74,7 +74,7 @@ function Home() {
         <div className='w-full pb-12'>
            
                 <HomeWrapper>
-                <div className='pb-10 gap-x-14 gap-y-16 flex flex-wrap justify-center'>
+                <div className='pb-10 gap-x-14 gap-y-16 flex flex-wrap justify-center xl:justify-start'>
                     {posts.map((post) => (
                         <div key={post.$id} className='min-w-[290px] w-[30%]'>
                             <PostCard {...post} />

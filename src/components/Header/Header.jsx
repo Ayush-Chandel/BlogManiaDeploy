@@ -48,13 +48,13 @@ function Header() {
   ]
 
   return (
-    <header className='py-6  bg-[rgb(250,250,250)] border-b-[1px] border-black '>
+    <header className='py-6  bg-[rgb(250,250,250)] border-b-[1px] border-black sticky top-0 z-10 '>
       <Container>
         
-        <nav>
+        <nav >
            {/* Navbar for Mobile */}
 
-        <div className={ `w-full h-screen  bg-[rgba(150,150,150,0.5)]  ${visible ? 'left-0 '  : ' -left-full' } top-0 transition-all duration-100  xl:hidden fixed z-10`} onClick={() => {
+        <div className={ `w-full h-screen  bg-[rgba(150,150,150,0.5)]  ${visible ? 'left-0 '  : ' -left-full' } top-0 transition-all duration-100  xl:hidden fixed z-30`} onClick={() => {
           setVisible(false);
         }
         }>

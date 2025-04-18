@@ -63,25 +63,25 @@ export default function Post() {
             <Container>
 
              <div className="pb-8">
-             <div className=" my-10 mb-16">
-                    <h1 className="w-[57%] mx-auto text-4xl font-bold">{post.title}</h1>
+             <div className=" my-10 mb-14 xl:mb-16">
+                    <h1 className=" w-[93%] xl:w-[57%] mx-auto text-2xl xl:text-4xl font-bold">{post.title}</h1>
                 </div>   
-            <div className="w-full my-12 flex justify-center">
-            <div className=" flex w-[65%] justify-center mb-4 relative  rounded-xl ">
+            <div className="w-full my-8 xl:my-12 flex justify-center">
+            <div className=" flex w-[93%] xl:w-[65%] justify-center mb-4 relative  rounded-xl ">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl w-full  h-[500px] border p-3 object-cover bg-gray-500"
+                        className="rounded-xl w-full h-[250px] xl:h-[500px] border p-3 object-cover bg-gray-500"
                     />
 
                     {isAuthor && (
-                        <div className="flex gap-2 absolute right-8 top-10 shadow-">
+                        <div className="flex gap-2 absolute right-8 top-10 shadow-2xl">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3 shadow-lg xl:px-5 rounded-full shadow-black">
+                                <Button bgColor="bg-green-500" className="  mr-3 shadow-lg px-[10px] xl:px-5 py-1  rounded-full shadow-black">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost} className="shadow-lg shadow-black xl:px-4">
+                            <Button bgColor="bg-red-500" onClick={deletePost} className="shadow-lg shadow-black py-1 px-[8px] xl:px-4">
                                 Delete
                             </Button>
                         </div>
@@ -90,7 +90,7 @@ export default function Post() {
             </div>
                 
                 <div className="w-full flex justify-center">
-                <div className="w-4/5">
+                <div className="w-[90%]">
                     {parse(post.content)}
                 </div>
                 </div>

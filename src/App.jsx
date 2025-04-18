@@ -90,7 +90,7 @@ function App() {
   
   return !loading ? (
     <div className=' min-h-screen flex flex-wrap content-between bg-[rgb(250,250,250)] '>
-      <div className='w-full block'>
+      <div className='w-full  min-h-screen flex flex-col'>
 
         <Header />
         <main >
