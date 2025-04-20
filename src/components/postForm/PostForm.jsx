@@ -4,9 +4,7 @@ import {Input, Select, Button, RTE} from '../index';
 import firebaseService from '../../firebase/conf';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import authService from '../../firebase/auth';
-import {updatePublic,increPublic} from '../../store/postSlice';
-import { where } from 'firebase/firestore';
+
 import { useDispatch } from 'react-redux';
 
 
@@ -59,24 +57,9 @@ function PostForm({post}) {
            )
 
            if(dbPost){
-                if (post.publicPost) {
+               
+                  navigate(`/post/${post.$id}`);
                 
-                  //publicPosts updated to redux store here
-
-                const posts = await firebaseService.getPosts([where('publicPost', '==', true)])
-                
-      
-        
-
-                    if(posts){
-                      dispatch(updatePublic([posts.length, posts]))
-                      navigate(`/post/${post.$id}`)
-                    }
-                    
-
-                }else{
-                  navigate(`/post/${post.$id}`)
-                }
                 
            }
 
@@ -103,21 +86,9 @@ function PostForm({post}) {
                  setError('Error!! : Please enter different slug either directly in slug field or by changing title')
               }else if(dbPost ){
 
-                    if(publicCount < 8){
-
-                      //publicPosts pushed to redux store here
-                       
-                      publicCount = publicCount + 1;
-                      let post = await  firebaseService.getPost(data.slug);
-                      
-                        if(post){
-                          dispatch(increPublic([publicCount,post]));
-                          navigate(`/post/${data.slug}`)
-                        }
-                      
-                    }else{
+                    
                       navigate(`/post/${data.slug}`)
-                    }
+                    
 
                 
               }

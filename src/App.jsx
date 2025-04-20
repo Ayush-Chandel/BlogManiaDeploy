@@ -9,9 +9,11 @@ import { Header } from './components';
 import { Footer } from './components';
 import {Outlet} from 'react-router-dom';
 import firebaseService from './firebase/conf';
-import { where } from 'firebase/firestore';
-import {updatePublic} from './store/postSlice';
+import {  collection, onSnapshot, query, where } from 'firebase/firestore';
+
+import {createPublic,updatePublic, deletePublic} from './store/postSlice';
 import loadGif from './assets/loading-loading-forever.gif'
+import config from "./config/config";
 
 
 
@@ -42,17 +44,35 @@ function App() {
     )
     .finally(() => {
 
-      
-      firebaseService.getPosts([where('publicPost', '==', true)]).then((posts) => {
+      const q = query(collection(firebaseService.db, config.firebaseCollectionId), where("publicPost", "==", true));
 
-        if(posts){
-            dispatch(updatePublic([posts.length, posts]))
-          setLoading(false);  
+      onSnapshot(q, (documents) => {
+
+        
+        
+        
+      documents.docChanges().forEach(change => {
+
+        const post = {
+          $id: change.doc.id,
+          ...change.doc.data()
         }
-            }
-            );
 
-            // setLoading(false);  
+        if (change.type === "added") {
+          dispatch(createPublic(post));
+        } else if (change.type === "modified") {
+          dispatch(updatePublic(post));
+        } else if (change.type === "removed") {
+          dispatch(deletePublic(post));
+        }
+        
+      });;
+      
+        setLoading(false);
+      }
+      )
+      
+    
 
           
     }

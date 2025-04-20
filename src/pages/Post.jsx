@@ -18,7 +18,7 @@ export default function Post() {
 
     const isAuthor = post && userData ? post.userId === userData.uid : false;
 
-    const dispatch = useDispatch();
+    
 
     
 
@@ -40,19 +40,9 @@ export default function Post() {
 
                if (fileStatus) {
 
-                if (post.publicPost) {
-
-                    const posts = await firebaseService.getPosts([where('publicPost', '==', true)])
-                    
-                        if(posts){
-                          dispatch(updatePublic([posts.length, posts]))
-                          navigate(`/`)
-                        }
-                        
-    
-                    }else{
+                
                       navigate(`/`)
-                    }
+                    
                }
             }
        
