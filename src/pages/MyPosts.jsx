@@ -18,6 +18,7 @@ function MyPosts() {
         
       if (posts) {
         
+    
         
         setPosts(posts) 
       }
@@ -27,7 +28,24 @@ function MyPosts() {
     },[]
     )
 
-    
+    if(posts.length === 0){
+      return (
+      <div className='w-full py-8 text-center mt-4'>
+       
+             
+              <div className='flex flex-wrap '>
+                  <div className='p-2 w-full'>
+                      <h1 className='text-2xl font-bold
+                       hover:text-gray-600'>
+                          No Posts to show
+                      </h1>
+                  </div>
+              </div>
+             
+       
+      </div>
+      )
+  }
 
   return (
     

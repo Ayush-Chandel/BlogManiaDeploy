@@ -31,7 +31,7 @@ const postSlice = createSlice({
 
         const pubPosts = [];
 
-        state.publicPosts.forEach((publicPost, index) => {
+        state.publicPosts.forEach((publicPost) => {
             if(publicPost.$id === action.payload.$id){
                return null;
             }

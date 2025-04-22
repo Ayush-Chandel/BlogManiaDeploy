@@ -34,7 +34,7 @@ import { createClient } from '@supabase/supabase-js'
         
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId, publicPost}) {
+    async createPost({title, slug, content, featuredImage,  userId, publicPost}) {
        
         
         try {
@@ -47,23 +47,11 @@ import { createClient } from '@supabase/supabase-js'
             } else {
 
 
-              // let postObj = {
-              //   title,
-              //   content,
-              //   status,
-              //   featuredImage,
-              //   userId
-              // };
-
-              // if(public){
-              //   postObj.public = public
-              // }
-
+             
                 
                await setDoc(doc(this.db, config.firebaseCollectionId, slug), {
                 title,
                 content,
-                status,
                 featuredImage,
                 userId,
                 publicPost
@@ -88,20 +76,20 @@ import { createClient } from '@supabase/supabase-js'
 
     
 
-    async updatePost(slug,{title,  content, featuredImage, status}) {
+    async updatePost(slug,{title,  content, featuredImage}) {
         
         try {
 
             const data = featuredImage ? {
                 title,
                 content,
-                status,
+                
                 featuredImage
               } 
               : {
                 title,
                 content,
-                status
+              
               };
 
              await updateDoc(doc(this.db, config.firebaseCollectionId, slug ),data);
@@ -147,7 +135,7 @@ import { createClient } from '@supabase/supabase-js'
              } 
             } else {
                 console.log('No such document');
-              return false
+              return 'No Such Doc'
             }
              
           }  catch (error) {
@@ -161,7 +149,7 @@ import { createClient } from '@supabase/supabase-js'
 
     
 
-    async getPosts(queries = [where('status', '==', 'active')]){
+    async getPosts(queries = []){
 
         try {
 

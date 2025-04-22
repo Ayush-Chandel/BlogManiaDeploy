@@ -27,7 +27,11 @@ export default function Post() {
         
         if (slug) {
             firebaseService.getPost(slug).then((post) => {
-                if (post) setPost(post);
+                if(post === 'No Such Doc'){
+                    console.log(post);
+                    
+                    setPost(post)
+                }else if (post) setPost(post);
                 else navigate("/");
             });
         } else navigate("/");
@@ -47,6 +51,23 @@ export default function Post() {
             }
        
     };
+
+    if(post === 'No Such Doc'){
+        return  <div className='w-full py-8 text-center mt-4'>
+         
+        
+        <div className='flex flex-wrap '>
+            <div className='p-2 w-full'>
+                <h1 className='text-2xl font-bold
+                 hover:text-gray-600'>
+                    Post is deleted by user
+                </h1>
+            </div>
+        </div>
+        
+ 
+</div>
+    }
 
     return post ? (
         <div className="  py-8">

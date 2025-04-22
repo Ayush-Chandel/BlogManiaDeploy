@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import firebaseService from '../firebase/conf';
 import { Container, PostCard, HomeWrapper} from '../components';
-import { useSelector } from 'react-redux';
+import { useSelector, useStore } from 'react-redux';
 import { where } from 'firebase/firestore';
 import {updatePublic} from '../store/postSlice';
 import { useDispatch } from 'react-redux';
@@ -11,46 +11,11 @@ import { Link } from 'react-router-dom';
 
 
 function Home() {
-    // const [posts, setPosts] = useState(false);
-    // const dispatch = useDispatch();
+  
+    const store = useStore();
 
-    const posts = useSelector((state) => state.post.publicPosts);
-
+    const posts = store.getState().post.publicPosts;
     
-    
-    // useEffect(() => {
-        
-    //             firebaseService.getPosts([where('public', '==', true)]).then((posts) => {
-
-    //             if(posts){
-    //                 dispatch(updatePublic([posts.length, posts]))
-    //                setPosts(posts); 
-    //             }
-    //                 }
-    //                 )
-        
-    // }
-    // ,[])
-    // // ,[authStatus])
-
-    // if(posts === false){
-    //     return (
-    //     <div className='w-full py-8 text-center mt-4'>
-    //         <Container>
-    //             <div className='flex flex-wrap '>
-    //                 <div className='p-2 w-full'>
-    //                     <h1 className='text-2xl font-bold
-    //                      hover:text-gray-600'>
-    //                        ...Loading
-    //                     </h1>
-    //                 </div>
-    //             </div> 
-    //         </Container>
-    //     </div>
-    //     )
-    // }
-    // else
-
      if(posts.length === 0){
         return (
         <div className='w-full py-8 text-center mt-4'>
@@ -112,92 +77,4 @@ function Home() {
 
 export default Home
 
-
-// import React, {useEffect, useState} from 'react';
-// import firebaseService from '../firebase/conf';
-// import { Container, PostCard } from '../components';
-// import { useSelector } from 'react-redux';
-// import { where } from 'firebase/firestore';
-
-
-// function Home() {
-//     const [posts, setPosts] = useState(false);
-
-//     const authStatus = useSelector((state) => state.status);
-
-    
-//     useEffect(() => {
-//         if(authStatus){
-//                 firebaseService.getPosts().then((posts) => {
-
-//                 if(posts){
-//                 setPosts(posts); 
-//                 }
-//                     }
-//                     )
-//         }else{
-//                 firebaseService.getPosts([where('public', '==', true)]).then((posts) => {
-
-//                 if(posts){
-//                    setPosts(posts); 
-//                 }
-//                     }
-//                     )
-//         }
-//     }
-//     ,[authStatus])
-
-//     if(posts === false){
-//         return (
-//         <div className='w-full py-8 text-center mt-4'>
-//             <Container>
-//                 <div className='flex flex-wrap '>
-//                     <div className='p-2 w-full'>
-//                         <h1 className='text-2xl font-bold
-//                          hover:text-gray-600'>
-//                            ...Loading
-//                         </h1>
-//                     </div>
-//                 </div> 
-//             </Container>
-//         </div>
-//         )
-//     }
-//     else if(posts.length === 0){
-//         return (
-//         <div className='w-full py-8 text-center mt-4'>
-//             <Container>
-//                 <div className='flex flex-wrap '>
-//                     <div className='p-2 w-full'>
-//                         <h1 className='text-2xl font-bold
-//                          hover:text-gray-600'>
-//                             No Posts to show
-//                         </h1>
-//                     </div>
-//                 </div>
-//             </Container>
-//         </div>
-//         )
-//     }
-
-//     return (
-//         <div className='w-full py-8'>
-//             <Container>
-//                 <div className='flex flex-wrap'>
-//                     {posts.map((post) => (
-//                         <div key={post.$id} className='p-2 w-1/4'>
-//                             <PostCard {...post} />
-//                         </div>)
-//                     )}
-//                 </div>
-            
-//             </Container>   
-//         </div>
-        
-//     )
-    
-  
-// }
-
-// export default Home
 

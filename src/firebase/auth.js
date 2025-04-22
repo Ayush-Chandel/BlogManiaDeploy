@@ -61,12 +61,9 @@ export class AuthService{
 
            try {
 
-           return await new Promise((resolve, reject) => {
+           let userData = await new Promise((resolve, reject) => {
 
-            if(this.unSub){
-                this.unSub();
-            }
-
+            
             this.unSub = onAuthStateChanged(this.auth, (userData) => {
                 if(userData){
                     userData = {
@@ -75,16 +72,25 @@ export class AuthService{
                     resolve(userData);
                     
                     
+                    
                 }else{
                     reject('User is not signed in')
                 }
+
             }
+
             )
+            
+           
 
+           });
+           
+            this.unSub();
 
-           })
+            return userData;
             
          } catch (error) {
+            this.unSub();
             console.log('Firebase service :: getCurrentUser :: error' , error);
             return null;
          }
@@ -93,20 +99,7 @@ export class AuthService{
         
     }
 
-    //  getCurrentUser(){
-       
-    //        let userData = this.auth.currentUser;
-
-    //        if(userData){
-    //         return userData;
-    //        }
-
-    //        console.log(' getCurrentUser :: error :: user is not signed in');
-           
-    //        return null;
-        
-    // }
-
+   
 
     async logout(){
         try {

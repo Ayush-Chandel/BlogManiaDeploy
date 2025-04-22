@@ -22,10 +22,10 @@ import config from "./config/config";
 function App() {
  
   const [loading,setLoading] = useState(true);
+
   const dispatch = useDispatch()
 
  
-  
 
   useEffect(() => {
 
@@ -47,9 +47,6 @@ function App() {
       const q = query(collection(firebaseService.db, config.firebaseCollectionId), where("publicPost", "==", true));
 
       onSnapshot(q, (documents) => {
-
-        
-        
         
       documents.docChanges().forEach(change => {
 
@@ -107,6 +104,10 @@ function App() {
   // )
 
   
+
+
+  
+ 
   
   return !loading ? (
     <div className=' min-h-screen flex flex-wrap content-between bg-[rgb(250,250,250)] '>

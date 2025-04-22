@@ -18,8 +18,7 @@ function PostForm({post}) {
         defaultValues: {
             title: post?.title || '',
             slug: post?.$id || '',
-            content: post?.content || '',
-            status: post?.status || 'active'
+            content: post?.content || ''
 
         }
     });
@@ -171,7 +170,7 @@ function PostForm({post}) {
         />
         <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
     </div>
-    <div className="w-[92%] mx-auto md:w-[35%] xl:w-[30%] px-2 py-10 xl:py-0">
+    <div className="w-[92%] mx-auto md:w-[35%] xl:w-[30%] px-2 py-10 xl:py-0 xl:mt-16 ">
         <Input
             label={post ? "Update Featured Image :" : 'Add Featured Image :'}
             type="file"
@@ -190,13 +189,7 @@ function PostForm({post}) {
             </div>
         )}
         
-        <Select
-            options={["active", "inactive"]}
-            label="Status"
-            className="mb-4 mt-2 xl:mt-0 "
-            {...register("status", { required: true })}
-        />
-        <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full py-2">
+        <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full py-2 xl:mt-6">
             {post ? "Update" : "Submit"}
         </Button>
     </div>

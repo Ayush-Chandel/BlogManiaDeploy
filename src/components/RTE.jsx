@@ -13,7 +13,7 @@ export default function RTE({name, control, label, defaultValue = ''}) {
         control={control}
         render={
           ({field: {onChange}}) => (
-           <div className=' h-[350px] md:h-[430px] xl:h-[500px]'>
+           <div className=' h-[450px] md:h-[480px] xl:h-[500px]'>
              <Editor 
             initialValue={defaultValue}
             apiKey={config.tinyMceApiKey}
