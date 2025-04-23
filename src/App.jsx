@@ -7,7 +7,7 @@ import authService from './firebase/auth';
 import { login, logout } from './store/authSlice';
 import { Header } from './components';
 import { Footer } from './components';
-import {Outlet} from 'react-router-dom';
+import {Outlet, ScrollRestoration} from 'react-router-dom';
 import firebaseService from './firebase/conf';
 import {  collection, onSnapshot, query, where } from 'firebase/firestore';
 
@@ -110,6 +110,8 @@ function App() {
  
   
   return !loading ? (
+    <>
+    
     <div className=' min-h-screen flex flex-wrap content-between bg-[rgb(250,250,250)] '>
       <div className='w-full  min-h-screen flex flex-col'>
 
@@ -117,11 +119,14 @@ function App() {
         <main >
          
          <Outlet />
+        
         </main>
+         <ScrollRestoration />
         <Footer/>
 
       </div>
       </div>
+    </>
   ) : <div className='h-[100vh] flex justify-center items-center'>
     <img src={loadGif} className='w-[50px] h-[50px]' alt="" />
     

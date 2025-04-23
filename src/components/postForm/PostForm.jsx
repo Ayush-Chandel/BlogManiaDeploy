@@ -170,7 +170,7 @@ function PostForm({post}) {
         />
         <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
     </div>
-    <div className="w-[92%] mx-auto md:w-[35%] xl:w-[30%] px-2 py-10 xl:py-0 xl:mt-16 ">
+    <div className="w-[92%] mx-auto md:w-[35%] xl:w-[30%] px-2 py-10 xl:py-0  ">
         <Input
             label={post ? "Update Featured Image :" : 'Add Featured Image :'}
             type="file"
@@ -189,7 +189,7 @@ function PostForm({post}) {
             </div>
         )}
         
-        <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full py-2 xl:mt-6">
+        <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full py-2 xl:mt-4">
             {post ? "Update" : "Submit"}
         </Button>
     </div>
