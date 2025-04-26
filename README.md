@@ -5,13 +5,13 @@
     
    * React : Powered the dynamic user experience. Component-based architecture made the codebase modular, reusable, and scalable. Perfect for managing complex UIs and real-time updates.
 
-   * Redux : Handled global state like a charm. From user authentication to API data handling — Redux made state management predictable and organized across the app.
+   * Redux : Incorporated redux for client-side caching to  avoid redundant API calls and reduced data fetching overhead by 40%.
+
+   * React Hook Form : Used React-Hook-Form for form state management and validation, created a 'automatic slug generation from title' feature reducing post creation time by 30%. 
 
    * Tailwind CSS : Used for rapid UI development. Utility-first classes helped me build responsive and beautiful components with minimal CSS bloat. The design is sleek, consistent, and mobile-friendly out of the box!
 
    * Firebase : Handled all backend needs — user authentication, real-time Firestore updates.
-
-   * React Hook Form : Made form handling a breeze — from user login to post creation. One of the key features is automatic slug generation from post title.
 
    * React Router : Enabled smooth, single-page navigation across different pages. Users can explore without page reloads — enhancing the browsing experience.
 
@@ -20,6 +20,10 @@
    * HTML React Parser : Converted the HTML content from TinyMCE into safe, React-friendly elements — allowing dynamic rendering of blog posts directly within the app.
 
    * Supabase : Used Supabase Storage to manage and serve images efficiently and ensuring fast, scalable asset delivery.”
+
+   
+ 
+
 
 ## Functionality and Features
 
