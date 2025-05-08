@@ -182,7 +182,7 @@ function PostForm({post}) {
             <div className="w-full mb-6 flex flex-col items-center">
               <p className='w-full mb-4 text-base xl:text-xl'>Current Featured Image :</p>
                 <img
-                    src={firebaseService.getFilePreview(post.featuredImage,50)}
+                    src={firebaseService.getFilePreview(post.featuredImage)}
                     alt={post.title}
                     className="rounded-lg  w-full h-[170px] object-cover "
                 />
