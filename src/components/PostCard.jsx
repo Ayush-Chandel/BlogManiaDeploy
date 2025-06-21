@@ -6,7 +6,7 @@ function PostCard({
     $id, title, featuredImage, 
 }) {
 
-  console.log(firebaseService.getFilePreview(featuredImage));
+ 
   
   return (
     <Link to={`/post/${$id}`}>

@@ -37,6 +37,7 @@ function PostForm({post}) {
     const submit = async (data) => {
   
       
+  
         if (post) {
          
           
@@ -144,7 +145,7 @@ function PostForm({post}) {
     },[watch,slugTransform,setValue]
     )
     
-    
+   
     
  
   return (
